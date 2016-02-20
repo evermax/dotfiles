@@ -1,0 +1,52 @@
+[alias]
+
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+    # Commit all changes
+    ca = !git add -A && git commit -av
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Color graph log view
+    graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # Amend the currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # Credit an author on the latest commit
+    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
+    lg = log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit
+
+[user]
+	name = Maxime
+	email = maxlasserre@free.fr
+[github]
+    user= evermax
+[core]
+	excludesfile = /Users/maximelasserre/.gitignore_global
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+	editor = /usr/local/bin/vim
