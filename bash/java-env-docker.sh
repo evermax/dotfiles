@@ -31,7 +31,7 @@ maven_data() {
 }
 
 netbeans() {
-    setDocker java
+    setDockerVM java
     del_stopped netbeans
 
     docker run -ti --rm \

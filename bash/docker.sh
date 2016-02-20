@@ -56,7 +56,7 @@ relies_on(){
 }
 
 tor() {
-    setDocker graphical
+    setDockerVM graphical
     del_stopped tor-browser
     docker run -it \
         -e DISPLAY=192.168.99.1:0 \
