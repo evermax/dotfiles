@@ -1,0 +1,7 @@
+! This one leaves the right alt as Mode_switch and places Alt on a separate X11 modifier assignment
+keycode 66 = Alt_L
+! keycode 69 = Mode_switch
+clear mod1
+clear mod4
+add mod1 = Mode_switch
+add mod4 = Alt_L
