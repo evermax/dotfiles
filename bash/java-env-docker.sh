@@ -15,7 +15,7 @@ mvn() {
     setDockerVM java
     docker run --rm \
       -v $(pwd):/project \
-      -m 1025m \
+      -m 1024m \
       --volumes-from maven_data \
       dirichlet/maven $*
 
